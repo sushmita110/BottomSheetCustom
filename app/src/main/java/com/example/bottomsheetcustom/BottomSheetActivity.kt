@@ -30,6 +30,5 @@ class BottomSheetActivity : AppCompatActivity() {
         val dialog = BottomSheetDialog(this)
         dialog.setContentView(bottomSheetDialog)
         dialog.show()
-        (bottomSheetDialog.parent as View).setBackgroundColor(Color.TRANSPARENT)
     }
 }
