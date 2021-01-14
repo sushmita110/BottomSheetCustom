@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp">
+
+            <com.example.bottomsheetcustom.BottomSheetCustomView
+                android:id="@+id/settings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:bsc_image="@drawable/ic_settings"
+                app:bsc_label="Settings"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.example.bottomsheetcustom.BottomSheetCustomView
+                android:id="@+id/archive"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:bsc_image="@drawable/ic_archieve"
+                app:bsc_label="Archive"
+                app:layout_constraintTop_toBottomOf="@id/settings" />
+
+            <com.example.bottomsheetcustom.BottomSheetCustomView
+                android:id="@+id/insights"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:bsc_image="@drawable/ic_insights"
+                app:bsc_label="Insights"
+                app:layout_constraintTop_toBottomOf="@id/archive" />
+
+            <com.example.bottomsheetcustom.BottomSheetCustomView
+                android:id="@+id/activity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:bsc_image="@drawable/ic_activity"
+                app:bsc_label="Your Activity"
+                app:layout_constraintTop_toBottomOf="@id/insights" />
+
+            <com.example.bottomsheetcustom.BottomSheetCustomView
+                android:id="@+id/qr_code"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:bsc_image="@drawable/ic_scanner"
+                app:bsc_label="QR Code"
+                app:layout_constraintTop_toBottomOf="@id/activity" />
+
+            <com.example.bottomsheetcustom.BottomSheetCustomView
+                android:id="@+id/saved"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:bsc_image="@drawable/ic_saved"
+                app:bsc_label="Saved"
+                app:layout_constraintTop_toBottomOf="@id/qr_code" />
+
+            <com.example.bottomsheetcustom.BottomSheetCustomView
+                android:id="@+id/close_friends"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:bsc_image="@drawable/ic_close_friends"
+                app:bsc_label="Close Friends"
+                app:layout_constraintTop_toBottomOf="@id/saved" />
+
+            <com.example.bottomsheetcustom.BottomSheetCustomView
+                android:id="@+id/discover_people"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:bsc_image="@drawable/ic_discover_people"
+                app:bsc_label="Discover People"
+                app:layout_constraintTop_toBottomOf="@id/close_friends" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
