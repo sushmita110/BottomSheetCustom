@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bottomsheet.databinding.ActivityMainBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 
-class MainActivity : AppCompatActivity() {
+class BottomSheetCustomActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
 
         bottomSheetAdapter = BottomSheetAdapter()
         binding.rvProfileData.apply {
-            layoutManager = LinearLayoutManager(this@MainActivity)
+            layoutManager = LinearLayoutManager(this@BottomSheetCustomActivity)
             adapter = bottomSheetAdapter
         }
 
