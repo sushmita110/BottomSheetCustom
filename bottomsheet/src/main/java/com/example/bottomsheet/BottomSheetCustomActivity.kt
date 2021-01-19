@@ -23,7 +23,7 @@ object BottomSheetCustomActivity {
         Toast.makeText(c, message, Toast.LENGTH_SHORT).show()
     }
 
-    open fun showEditDialog(context: Context, labels: Array<String>, images: IntArray) {
+    open fun showEditDialog(context: Context, labels: String, images: IntArray) {
         binding = ActivityMainBinding.inflate(LayoutInflater.from(context))
         binding.root
         val dialog = BottomSheetDialog(context)

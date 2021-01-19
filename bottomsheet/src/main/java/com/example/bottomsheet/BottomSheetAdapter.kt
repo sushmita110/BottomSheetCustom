@@ -8,7 +8,7 @@ import com.example.bottomsheet.databinding.BottomSheetCustomViewBinding
 open class BottomSheetAdapter :
     RecyclerView.Adapter<BottomSheetAdapter.RecycleViewHolder>() {
     lateinit var binding: BottomSheetCustomViewBinding
-    var items: Array<String> = arrayOf()
+    var items: String = ""
     var images: IntArray = intArrayOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecycleViewHolder {
@@ -18,14 +18,14 @@ open class BottomSheetAdapter :
     }
 
     override fun getItemCount(): Int {
-        return items.size
+        return images.size
     }
 
     override fun onBindViewHolder(holder: RecycleViewHolder, position: Int) {
         holder.apply {
             itemView.apply {
                 binding.ivIcon.setImageResource(images[position])
-                binding.tvLabel.text = items[position]
+                binding.tvLabel.text = items
             }
         }
     }
