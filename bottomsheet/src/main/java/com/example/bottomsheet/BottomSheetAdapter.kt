@@ -5,9 +5,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bottomsheet.databinding.BottomSheetCustomViewBinding
 
-class BottomSheetAdapter :
+open class BottomSheetAdapter :
     RecyclerView.Adapter<BottomSheetAdapter.RecycleViewHolder>() {
-    private lateinit var binding: BottomSheetCustomViewBinding
+    lateinit var binding: BottomSheetCustomViewBinding
     var items: Array<String> = arrayOf()
     var images: IntArray = intArrayOf()
 

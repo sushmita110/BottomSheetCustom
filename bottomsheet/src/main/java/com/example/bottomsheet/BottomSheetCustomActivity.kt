@@ -1,16 +1,18 @@
 package com.example.bottomsheet
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Context
 import android.os.Bundle
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bottomsheet.databinding.ActivityMainBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 
-class BottomSheetCustomActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
+open class BottomSheetCustomActivity : AppCompatActivity() {
 
-    private lateinit var bottomSheetAdapter: BottomSheetAdapter
+    lateinit var binding: ActivityMainBinding
+    lateinit var bottomSheetAdapter: BottomSheetAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,7 +20,11 @@ class BottomSheetCustomActivity : AppCompatActivity() {
         setContentView(binding.root)
     }
 
-    fun showEditDialog(labels: Array<String>, images: IntArray) {
+    open fun s(c: Context, message: String) {
+        Toast.makeText(c, message, Toast.LENGTH_SHORT).show()
+    }
+
+    open fun showEditDialog(labels: Array<String>, images: IntArray) {
         val dialog = BottomSheetDialog(this)
 
         bottomSheetAdapter = BottomSheetAdapter()
