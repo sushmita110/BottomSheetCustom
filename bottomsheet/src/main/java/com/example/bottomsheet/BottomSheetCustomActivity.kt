@@ -2,28 +2,30 @@ package com.example.bottomsheet
 
 import android.content.Context
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bottomsheet.databinding.ActivityMainBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 
-object BottomSheetCustomActivity : AppCompatActivity() {
+object BottomSheetCustomActivity {
 
     lateinit var binding: ActivityMainBinding
     lateinit var bottomSheetAdapter: BottomSheetAdapter
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-    }
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+//        binding = ActivityMainBinding.inflate(layoutInflater)
+//        setContentView(binding.root)
+//    }
 
     open fun s(c: Context, message: String) {
         Toast.makeText(c, message, Toast.LENGTH_SHORT).show()
     }
 
     open fun showEditDialog(context: Context, labels: Array<String>, images: IntArray) {
+        binding = ActivityMainBinding.inflate(LayoutInflater.from(context))
+        binding.root
         val dialog = BottomSheetDialog(context)
 
         bottomSheetAdapter = BottomSheetAdapter()
