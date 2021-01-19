@@ -8,8 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bottomsheet.databinding.ActivityMainBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 
-
-open class BottomSheetCustomActivity : AppCompatActivity() {
+object BottomSheetCustomActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityMainBinding
     lateinit var bottomSheetAdapter: BottomSheetAdapter
