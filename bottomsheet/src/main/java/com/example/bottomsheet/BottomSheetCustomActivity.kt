@@ -18,7 +18,7 @@ class BottomSheetCustomActivity : AppCompatActivity() {
         setContentView(binding.root)
     }
 
-    private fun showEditDialog(labels: Array<String>, images: IntArray) {
+    fun showEditDialog(labels: Array<String>, images: IntArray) {
         val dialog = BottomSheetDialog(this)
 
         bottomSheetAdapter = BottomSheetAdapter()
