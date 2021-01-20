@@ -1,6 +1,8 @@
 package com.example.bottomsheetcustom
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bottomsheetcustom.databinding.ActivityBottomSheetBinding
@@ -17,25 +19,33 @@ class BottomSheetActivity : AppCompatActivity() {
         binding = ActivityBottomSheetBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //binding.btnClick.setOnClickListener {
+        binding.btnClick.setOnClickListener {
             showEditDialog()
-       // }
+        }
     }
 
     private fun showEditDialog() {
         val dialog = BottomSheetDialog(this)
         val bindingSheet = DialogBottonCustomViewBinding.inflate(layoutInflater)
         dialog.setContentView(bindingSheet.root)
-        bottomSheetAdapter = BottomSheetAdapter()
+        bottomSheetAdapter = BottomSheetAdapter(onItemClick = { label ->
+            showToast(label)
+        })
         bindingSheet.rvProfileData.apply {
             layoutManager = LinearLayoutManager(this@BottomSheetActivity)
             adapter = bottomSheetAdapter
         }
 
-        val labels = mutableListOf(BottomSheetModel("Settings",R.drawable.ic_settings),
-        BottomSheetModel("Archieve",R.drawable.ic_archieve))
+        val labels = mutableListOf(
+            BottomSheetModel("Settings", R.drawable.ic_settings),
+            BottomSheetModel("Archieve", R.drawable.ic_archieve)
+        )
 
         bottomSheetAdapter.items = labels
         dialog.show()
+    }
+
+    fun showToast(label:String){
+        Toast.makeText(this, label, Toast.LENGTH_LONG).show()
     }
 }

@@ -1,12 +1,11 @@
 package com.example.bottomsheet
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bottomsheet.databinding.BottomSheetCustomViewBinding
 
-open class BottomSheetAdapter :
+open class BottomSheetAdapter(val onItemClick: (label: String) -> Unit) :
     RecyclerView.Adapter<BottomSheetAdapter.RecycleViewHolder>() {
     lateinit var binding: BottomSheetCustomViewBinding
     var items: MutableList<BottomSheetModel> = mutableListOf()
@@ -26,6 +25,9 @@ open class BottomSheetAdapter :
             itemView.apply {
                 binding.ivIcon.setImageResource(items[position].image)
                 binding.tvLabel.text = items[position].label
+                setOnClickListener {
+                    onItemClick.invoke(items[position].label)
+                }
             }
         }
     }
