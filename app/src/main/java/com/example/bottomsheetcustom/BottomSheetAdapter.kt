@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.bottom_sheet_custom_view.view.*
 
 
-class BottomSheetAdapter(private val onItemClick: (label: String) -> Unit) :
+class BottomSheetAdapter(private val onItemClick: OnItemClickListener) :
     RecyclerView.Adapter<BottomSheetAdapter.RecycleViewHolder>() {
 
     var items: MutableList<BottomSheetModel> = mutableListOf()
@@ -28,11 +28,16 @@ class BottomSheetAdapter(private val onItemClick: (label: String) -> Unit) :
                 iv_icon.setImageResource(items[position].image)
                 tv_label.text = items[position].label
                 setOnClickListener {
-                    onItemClick.invoke(items[position].label)
+                    onItemClick.onProfileData(
+                        items[position].label)
                 }
             }
         }
     }
 
     class RecycleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+
+    interface OnItemClickListener {
+        fun onProfileData(label: String)
+    }
 }

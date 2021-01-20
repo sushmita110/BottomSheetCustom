@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetDialog
 
-object BottomSheetCustomActivity {
+object BottomSheetCustomActivity : BottomSheetAdapter.OnItemClickListener{
     lateinit var bottomSheetAdapter: BottomSheetAdapter
 
     fun showEditDialog(
@@ -15,9 +15,7 @@ object BottomSheetCustomActivity {
         view: RecyclerView,
         profileData: MutableList<BottomSheetModel>
     ) {
-        bottomSheetAdapter = BottomSheetAdapter(onItemClick = { label ->
-            showToast(label)
-        })
+        bottomSheetAdapter = BottomSheetAdapter(this)
         view.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = bottomSheetAdapter
@@ -26,7 +24,7 @@ object BottomSheetCustomActivity {
         bottomSheetAdapter.items = profileData
     }
 
-    fun showToast(label:String){
+    override fun onProfileData(label: String) {
         Log.e("Tag", "$label")
     }
 }

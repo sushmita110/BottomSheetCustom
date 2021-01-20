@@ -9,7 +9,7 @@ import com.example.bottomsheetcustom.databinding.ActivityBottomSheetBinding
 import com.example.bottomsheetcustom.databinding.DialogBottonCustomViewBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 
-class BottomSheetActivity : AppCompatActivity() {
+class BottomSheetActivity : AppCompatActivity(), BottomSheetAdapter.OnItemClickListener{
 
     private lateinit var binding: ActivityBottomSheetBinding
     private lateinit var bottomSheetAdapter: BottomSheetAdapter
@@ -28,9 +28,7 @@ class BottomSheetActivity : AppCompatActivity() {
         val dialog = BottomSheetDialog(this)
         val bindingSheet = DialogBottonCustomViewBinding.inflate(layoutInflater)
         dialog.setContentView(bindingSheet.root)
-        bottomSheetAdapter = BottomSheetAdapter(onItemClick = { label ->
-            showToast(label)
-        })
+        bottomSheetAdapter = BottomSheetAdapter(this)
         bindingSheet.rvProfileData.apply {
             layoutManager = LinearLayoutManager(this@BottomSheetActivity)
             adapter = bottomSheetAdapter
@@ -45,7 +43,7 @@ class BottomSheetActivity : AppCompatActivity() {
         dialog.show()
     }
 
-    fun showToast(label:String){
+    override fun onProfileData(label: String) {
         Toast.makeText(this, label, Toast.LENGTH_LONG).show()
     }
 }
