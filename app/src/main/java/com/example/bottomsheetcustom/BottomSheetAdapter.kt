@@ -10,8 +10,9 @@ import kotlinx.android.synthetic.main.bottom_sheet_custom_view.view.*
 class BottomSheetAdapter :
     RecyclerView.Adapter<BottomSheetAdapter.RecycleViewHolder>() {
 
-    var items: Array<String> = arrayOf()
-    var images: IntArray = intArrayOf()
+    var items: MutableList<BottomSheetModel> = mutableListOf()
+//    var items: Array<String> = arrayOf()
+//    var images: IntArray = intArrayOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecycleViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -26,8 +27,8 @@ class BottomSheetAdapter :
     override fun onBindViewHolder(holder: RecycleViewHolder, position: Int) {
         holder.apply {
             itemView.apply {
-                iv_icon.setImageResource(images[position])
-                tv_label.text = items[position]
+                iv_icon.setImageResource(items[position].image)
+                tv_label.text = items[position].label
             }
         }
     }

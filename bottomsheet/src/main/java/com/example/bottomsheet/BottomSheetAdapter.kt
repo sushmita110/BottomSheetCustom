@@ -1,6 +1,7 @@
 package com.example.bottomsheet
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bottomsheet.databinding.BottomSheetCustomViewBinding
@@ -8,8 +9,7 @@ import com.example.bottomsheet.databinding.BottomSheetCustomViewBinding
 open class BottomSheetAdapter :
     RecyclerView.Adapter<BottomSheetAdapter.RecycleViewHolder>() {
     lateinit var binding: BottomSheetCustomViewBinding
-    var items: String = ""
-    var images: IntArray = intArrayOf()
+    var items: MutableList<BottomSheetModel> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecycleViewHolder {
         binding =
@@ -18,14 +18,14 @@ open class BottomSheetAdapter :
     }
 
     override fun getItemCount(): Int {
-        return images.size
+        return items.size
     }
 
     override fun onBindViewHolder(holder: RecycleViewHolder, position: Int) {
         holder.apply {
             itemView.apply {
-                binding.ivIcon.setImageResource(images[position])
-                binding.tvLabel.text = items
+                binding.ivIcon.setImageResource(items[position].image)
+                binding.tvLabel.text = items[position].label
             }
         }
     }
