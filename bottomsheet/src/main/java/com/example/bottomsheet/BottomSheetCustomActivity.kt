@@ -3,8 +3,11 @@ package com.example.bottomsheet
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.Toast
+import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.bottomsheet.databinding.ActivityMainBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 
@@ -23,13 +26,11 @@ object BottomSheetCustomActivity {
         Toast.makeText(c, message, Toast.LENGTH_SHORT).show()
     }
 
-    open fun showEditDialog(context: Context, labels: String, images: IntArray) {
-        binding = ActivityMainBinding.inflate(LayoutInflater.from(context))
-        binding.root
+    fun showEditDialog(context: Context, view: RecyclerView, labels: String, images: IntArray) {
         val dialog = BottomSheetDialog(context)
 
         bottomSheetAdapter = BottomSheetAdapter()
-        binding.rvProfileData.apply {
+        view.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = bottomSheetAdapter
         }
