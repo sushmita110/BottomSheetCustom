@@ -2,14 +2,13 @@ package com.example.bottomsheet
 
 import android.content.Context
 import android.content.Intent
-import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 object BottomSheetCustomActivity {
     lateinit var bottomSheetAdapter: BottomSheetAdapter
 
-    var clazz: Class<*>? = null
+    private lateinit var clazz: Class<*>
     fun showEditDialog(
         context: Context,
         view: RecyclerView,
@@ -28,7 +27,7 @@ object BottomSheetCustomActivity {
         bottomSheetAdapter.items = profileData
     }
 
-    fun test(context: Context,clazz: Class<*>?) {
+    fun test(context: Context,clazz: Class<*>) {
         val intent = Intent(context, clazz)
         context.startActivity(intent)
     }
