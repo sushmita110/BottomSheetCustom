@@ -28,9 +28,7 @@ class BottomSheetAdapter(private val onItemClick: OnItemClickListener) :
                 iv_icon.setImageResource(items[position].image)
                 tv_label.text = items[position].label
                 setOnClickListener {
-                    onItemClick.onProfileData(
-                        items[position].label
-                    )
+                    onItemClick.onProfileData(position)
                 }
             }
         }
@@ -39,6 +37,6 @@ class BottomSheetAdapter(private val onItemClick: OnItemClickListener) :
     class RecycleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
     interface OnItemClickListener {
-        fun onProfileData(item: String)
+        fun onProfileData(item: Int)
     }
 }

@@ -1,5 +1,7 @@
 package com.example.bottomsheetcustom
 
+import android.content.Context
+
 interface InterfaceListener {
-    fun onItemClicked()
+    fun onItemClicked(context: Context,clazz: Class<*>)
 }
