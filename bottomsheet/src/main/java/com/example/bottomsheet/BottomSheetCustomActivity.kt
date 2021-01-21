@@ -1,16 +1,12 @@
 package com.example.bottomsheet
 
 import android.content.Context
-import android.content.Intent
 import android.util.Log
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 object BottomSheetCustomActivity {
     lateinit var bottomSheetAdapter: BottomSheetAdapter
-    var context: Context? = null
-    var clazz: Class<*>? = null
 
     fun showEditDialog(
         context: Context,
@@ -31,8 +27,7 @@ object BottomSheetCustomActivity {
     }
 
     fun test(item: String) {
-        Toast.makeText(context, "$item", Toast.LENGTH_LONG).show()
-        context.startActivity(Intent(context, clazz))
+        Log.e("Tag", "$item")
     }
 
     fun onProfileData(label: String) {
