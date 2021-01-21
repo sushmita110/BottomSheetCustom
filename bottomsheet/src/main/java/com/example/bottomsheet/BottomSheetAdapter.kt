@@ -3,16 +3,15 @@ package com.example.bottomsheet
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.AdapterView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bottomsheet.databinding.BottomSheetCustomViewBinding
 
-open class BottomSheetAdapter(val onItemClick: (label: String) -> Unit) :
+class BottomSheetAdapter(private val onItemClick: OnItemClickListener) :
     RecyclerView.Adapter<BottomSheetAdapter.RecycleViewHolder>() {
 
     lateinit var binding: BottomSheetCustomViewBinding
     var items: MutableList<BottomSheetModel> = mutableListOf()
-    lateinit var context: Context
-    lateinit var clazz: Class<*>
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecycleViewHolder {
         binding =
@@ -30,7 +29,9 @@ open class BottomSheetAdapter(val onItemClick: (label: String) -> Unit) :
                 binding.ivIcon.setImageResource(items[position].image)
                 binding.tvLabel.text = items[position].label
                 setOnClickListener {
-                    onItemClick.invoke(items[position].label)
+                    onItemClick.onProfileData(
+                        items[position].label
+                    )
                 }
             }
         }
@@ -38,4 +39,8 @@ open class BottomSheetAdapter(val onItemClick: (label: String) -> Unit) :
 
     class RecycleViewHolder(binding: BottomSheetCustomViewBinding) :
         RecyclerView.ViewHolder(binding.root)
+
+    interface OnItemClickListener {
+        fun onProfileData(item: String)
+    }
 }

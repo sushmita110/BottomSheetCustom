@@ -30,8 +30,10 @@ class BottomSheetActivity : AppCompatActivity(){
         val bindingSheet = DialogBottonCustomViewBinding.inflate(layoutInflater)
         dialog.setContentView(bindingSheet.root)
 
-        bottomSheetAdapter = BottomSheetAdapter(onItemClick = { label ->
-          showToast(label)
+        bottomSheetAdapter = BottomSheetAdapter(object : BottomSheetAdapter.OnItemClickListener{
+            override fun onProfileData(item: String) {
+                test(item)
+            }
         })
 
         bindingSheet.rvProfileData.apply {
@@ -46,6 +48,9 @@ class BottomSheetActivity : AppCompatActivity(){
 
         bottomSheetAdapter.items = labels
         dialog.show()
+    }
+    fun test(item: String){
+        Toast.makeText(applicationContext, "$item",Toast.LENGTH_LONG).show()
     }
 
     fun showToast(label:String){
