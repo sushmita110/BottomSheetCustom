@@ -29,7 +29,6 @@ object BottomSheetCustomActivity {
     }
 
     fun test(context: Context,clazz: Class<*>?) {
-        Log.e("Tag", "$item")
         val intent = Intent(context, clazz)
         context.startActivity(intent)
     }
