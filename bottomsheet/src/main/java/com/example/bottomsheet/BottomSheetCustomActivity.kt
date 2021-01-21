@@ -18,8 +18,15 @@ object BottomSheetCustomActivity {
         profileData: MutableList<BottomSheetModel>
     ) {
         bottomSheetAdapter = BottomSheetAdapter(onItemClick = { context, label, clazz ->
-            onProfileData(context, label, clazz)
-        })
+            Log.e("Tag", "$label")
+            object : InterfaceListener {
+                override fun onItemClicked() {
+                    BottomSheetCustomActivity.context.startActivity(Intent(
+                        BottomSheetCustomActivity.context,
+                        BottomSheetCustomActivity.clazz
+                    ))
+                }
+            }        })
         view.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = bottomSheetAdapter
@@ -30,6 +37,8 @@ object BottomSheetCustomActivity {
 
     fun onProfileData(context: Context, label: String, clazz: Class<*>) {
         Log.e("Tag", "$label")
-        context.startActivity(Intent(context, clazz))
+
     }
+
+
 }
