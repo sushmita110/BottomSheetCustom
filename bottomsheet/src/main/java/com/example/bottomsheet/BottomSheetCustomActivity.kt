@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 object BottomSheetCustomActivity {
     lateinit var bottomSheetAdapter: BottomSheetAdapter
 
-    private lateinit var clazz: Class<*>
+    var clazz: Class<*>? = null
     fun showEditDialog(
         context: Context,
         view: RecyclerView,
@@ -16,7 +16,7 @@ object BottomSheetCustomActivity {
     ) {
         bottomSheetAdapter = BottomSheetAdapter(object : BottomSheetAdapter.OnItemClickListener {
             override fun onProfileData(item: String) {
-                test(context, clazz)
+                clazz?.let { test(context, it) }
             }
         })
         view.apply {
