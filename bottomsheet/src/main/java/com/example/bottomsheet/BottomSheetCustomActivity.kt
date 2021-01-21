@@ -1,32 +1,25 @@
 package com.example.bottomsheet
 
 import android.content.Context
-import android.content.Intent
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.bottomsheet.BottomSheetDialog
 
 object BottomSheetCustomActivity {
     lateinit var bottomSheetAdapter: BottomSheetAdapter
-    lateinit var context: Context
-    lateinit var clazz: Class<*>
 
     fun showEditDialog(
         context: Context,
         view: RecyclerView,
         profileData: MutableList<BottomSheetModel>
     ) {
-        bottomSheetAdapter = BottomSheetAdapter(onItemClick = { context, label, clazz ->
-            Log.e("Tag", "$label")
+        bottomSheetAdapter = BottomSheetAdapter(onItemClick = { label ->
             object : InterfaceListener {
                 override fun onItemClicked() {
-                    BottomSheetCustomActivity.context.startActivity(Intent(
-                        BottomSheetCustomActivity.context,
-                        BottomSheetCustomActivity.clazz
-                    ))
+                    Log.e("Tag", "$label")
                 }
-            }        })
+            }
+        })
         view.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = bottomSheetAdapter
@@ -39,6 +32,4 @@ object BottomSheetCustomActivity {
         Log.e("Tag", "$label")
 
     }
-
-
 }

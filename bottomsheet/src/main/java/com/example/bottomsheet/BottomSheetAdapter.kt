@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bottomsheet.databinding.BottomSheetCustomViewBinding
 
-open class BottomSheetAdapter(val onItemClick: (context: Context, label: String, clazz: Class<*>) -> Unit) :
+open class BottomSheetAdapter(val onItemClick: (label: String) -> Unit) :
     RecyclerView.Adapter<BottomSheetAdapter.RecycleViewHolder>() {
 
     lateinit var binding: BottomSheetCustomViewBinding
@@ -30,7 +30,7 @@ open class BottomSheetAdapter(val onItemClick: (context: Context, label: String,
                 binding.ivIcon.setImageResource(items[position].image)
                 binding.tvLabel.text = items[position].label
                 setOnClickListener {
-                    onItemClick.invoke(context, items[position].label, clazz)
+                    onItemClick.invoke(items[position].label)
                 }
             }
         }
