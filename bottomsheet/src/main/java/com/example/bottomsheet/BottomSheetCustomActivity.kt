@@ -17,7 +17,7 @@ object BottomSheetCustomActivity {
     ) {
         bottomSheetAdapter = BottomSheetAdapter(object : BottomSheetAdapter.OnItemClickListener {
             override fun onProfileData(item: String) {
-                test(context, item, clazz)
+                test(context, clazz)
             }
         })
         view.apply {
@@ -28,7 +28,7 @@ object BottomSheetCustomActivity {
         bottomSheetAdapter.items = profileData
     }
 
-    fun test(context: Context, item: String, clazz: Class<*>?) {
+    fun test(context: Context,clazz: Class<*>?) {
         Log.e("Tag", "$item")
         val intent = Intent(context, clazz)
         context.startActivity(intent)
