@@ -13,13 +13,13 @@ class BottomSheetCustomActivity @JvmOverloads constructor(
     listener: InterfaceListener = InterfaceListener.DEFAULT
 ) : InterfaceListener {
     lateinit var binding: ActivityMainBinding
-    lateinit var context: Context
 
     lateinit var bottomSheetAdapter: BottomSheetAdapter
 
     fun showEditDialog(
         context: Context,
-        view: RecyclerView, profileData: MutableList<BottomSheetModel>) {
+        view: RecyclerView, profileData: MutableList<BottomSheetModel>
+    ) {
         bottomSheetAdapter = BottomSheetAdapter(this)
         view.apply {
             layoutManager = LinearLayoutManager(context)
@@ -29,8 +29,8 @@ class BottomSheetCustomActivity @JvmOverloads constructor(
         bottomSheetAdapter.items = profileData
     }
 
-    override fun onProfileData(label: String) {
+    override fun onProfileData(context: Context, label: String) {
         Log.e("TAG", "$label")
-        Test.startAction(context,javaClass)
+        Test.startAction(context, javaClass)
     }
 }

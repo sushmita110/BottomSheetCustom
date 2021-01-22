@@ -4,8 +4,8 @@ import android.content.Context
 
 interface InterfaceListener {
     object DEFAULT : InterfaceListener {
-        override fun onProfileData(label: String) {}
+        override fun onProfileData(context: Context, label: String) {}
     }
 
-    fun onProfileData(label: String)
+    fun onProfileData(context: Context, label: String)
 }
