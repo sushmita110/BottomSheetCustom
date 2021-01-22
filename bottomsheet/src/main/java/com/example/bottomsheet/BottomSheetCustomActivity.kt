@@ -17,7 +17,7 @@ class BottomSheetCustomActivity @JvmOverloads constructor(
 
     lateinit var bottomSheetAdapter: BottomSheetAdapter
 
-    private fun showEditDialog(
+    fun showEditDialog(
         context: Context,
         view: RecyclerView, profileData: MutableList<BottomSheetModel>) {
         bottomSheetAdapter = BottomSheetAdapter(this)
