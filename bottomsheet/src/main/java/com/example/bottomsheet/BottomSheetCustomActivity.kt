@@ -1,11 +1,11 @@
 package com.example.bottomsheet
 
 import android.content.Context
+import android.content.Intent
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bottomsheet.databinding.ActivityMainBinding
-import com.google.android.material.bottomsheet.BottomSheetDialog
 
 
 class BottomSheetCustomActivity @JvmOverloads constructor(
@@ -31,5 +31,9 @@ class BottomSheetCustomActivity @JvmOverloads constructor(
 
     override fun onProfileData(label: String) {
         Log.e("TAG", "$label")
+    }
+
+    override fun startActivityTest(context: Context, clazz: Class<*>) {
+        context.startActivity(Intent(context,clazz))
     }
 }
