@@ -31,6 +31,6 @@ class BottomSheetCustomActivity @JvmOverloads constructor(
 
     override fun onProfileData(context: Context, label: String) {
         Log.e("TAG", "$label")
-        Test.startAction(context, javaClass)
+        Test.startAction(context, this::class.java)
     }
 }
