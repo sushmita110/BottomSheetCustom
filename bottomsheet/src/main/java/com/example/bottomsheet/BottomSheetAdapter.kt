@@ -1,9 +1,7 @@
 package com.example.bottomsheet
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.AdapterView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bottomsheet.databinding.BottomSheetCustomViewBinding
 
@@ -29,7 +27,7 @@ class BottomSheetAdapter(private val onItemClick: InterfaceListener) :
                 binding.ivIcon.setImageResource(items[position].image)
                 binding.tvLabel.text = items[position].label
                 setOnClickListener {
-                    onItemClick.onProfileData(
+                    onItemClick.onProfileData(context,
                         items[position].label
                     )
                 }
