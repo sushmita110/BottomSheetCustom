@@ -7,7 +7,7 @@ import android.widget.AdapterView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bottomsheet.databinding.BottomSheetCustomViewBinding
 
-class BottomSheetAdapter(private val onItemClick: OnItemClickListener) :
+class BottomSheetAdapter(private val onItemClick: InterfaceListener) :
     RecyclerView.Adapter<BottomSheetAdapter.RecycleViewHolder>() {
 
     lateinit var binding: BottomSheetCustomViewBinding
@@ -40,7 +40,7 @@ class BottomSheetAdapter(private val onItemClick: OnItemClickListener) :
     class RecycleViewHolder(binding: BottomSheetCustomViewBinding) :
         RecyclerView.ViewHolder(binding.root)
 
-    interface OnItemClickListener {
-        fun onProfileData(item: String)
-    }
+//    interface OnItemClickListener {
+//        fun onProfileData(item: String)
+//    }
 }

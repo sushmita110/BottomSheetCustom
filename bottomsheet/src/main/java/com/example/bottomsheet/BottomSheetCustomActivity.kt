@@ -1,35 +1,34 @@
 package com.example.bottomsheet
 
 import android.content.Context
-import android.content.Intent
+import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import com.example.bottomsheet.databinding.ActivityMainBinding
+import com.google.android.material.bottomsheet.BottomSheetDialog
 
-object BottomSheetCustomActivity {
+
+class BottomSheetCustomActivity @JvmOverloads constructor(
+    context: Context,
+    listener: InterfaceListener = InterfaceListener.DEFAULT
+) : InterfaceListener {
+    lateinit var binding: ActivityMainBinding
+    lateinit var context: Context
+
     lateinit var bottomSheetAdapter: BottomSheetAdapter
-    lateinit var clazz: Class<*>
 
-    fun showEditDialog(
-        context: Context,
-        view: RecyclerView,
-        profileData: MutableList<BottomSheetModel>
-    ) {
-        clazz = Class.forName(clazz.name)
-        bottomSheetAdapter = BottomSheetAdapter(object : BottomSheetAdapter.OnItemClickListener {
-            override fun onProfileData(item: String) {
-                test(context, clazz)
-            }
-        })
-        view.apply {
+    private fun showEditDialog(profileData: MutableList<BottomSheetModel>) {
+        val dialog = BottomSheetDialog(context)
+
+        bottomSheetAdapter = BottomSheetAdapter(this)
+        binding.rvProfileData.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = bottomSheetAdapter
         }
-
         bottomSheetAdapter.items = profileData
+        dialog.show()
     }
 
-    fun test(context: Context, clazz: Class<*>) {
-        val intent = Intent(context, clazz)
-        context.startActivity(intent)
+    override fun onProfileData(label: String) {
+        Log.e("TAG", "$label")
     }
 }
