@@ -7,16 +7,17 @@ import androidx.recyclerview.widget.RecyclerView
 
 object BottomSheetCustomActivity {
     lateinit var bottomSheetAdapter: BottomSheetAdapter
+    lateinit var clazz: Class<*>
 
-    var clazz: Class<*>? = null
     fun showEditDialog(
         context: Context,
         view: RecyclerView,
         profileData: MutableList<BottomSheetModel>
     ) {
+        clazz = Class.forName(clazz.name)
         bottomSheetAdapter = BottomSheetAdapter(object : BottomSheetAdapter.OnItemClickListener {
             override fun onProfileData(item: String) {
-                test(context)
+                test(context, clazz)
             }
         })
         view.apply {
@@ -27,7 +28,7 @@ object BottomSheetCustomActivity {
         bottomSheetAdapter.items = profileData
     }
 
-    fun test(context: Context) {
+    fun test(context: Context, clazz: Class<*>) {
         val intent = Intent(context, clazz)
         context.startActivity(intent)
     }
