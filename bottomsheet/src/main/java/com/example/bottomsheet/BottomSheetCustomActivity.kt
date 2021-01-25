@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bottomsheet.databinding.ActivityMainBinding
 import com.example.bottomsheet.databinding.BottomSheetCustomViewBinding
+import com.example.bottomsheet.databinding.DialogBottonCustomViewBinding
+import com.google.android.material.bottomsheet.BottomSheetDialog
 
 
 class BottomSheetCustomActivity @JvmOverloads constructor(
@@ -31,8 +33,12 @@ class BottomSheetCustomActivity @JvmOverloads constructor(
     fun showEditDialog(
         context: Context, profileData: MutableList<BottomSheetModel>
     ) {
+        val dialog = BottomSheetDialog(context)
+        val bindingSheet = DialogBottonCustomViewBinding.inflate(LayoutInflater.from(context),null,false)
+        dialog.setContentView(bindingSheet.root)
+
         bottomSheetAdapter = BottomSheetAdapter(this)
-        binding.rvProfileData.apply {
+        bindingSheet.rvProfileData.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = bottomSheetAdapter
         }
