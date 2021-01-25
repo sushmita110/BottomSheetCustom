@@ -2,18 +2,15 @@ package com.example.bottomsheet
 
 import android.content.Context
 import android.os.Bundle
-import android.util.AttributeSet
-import android.util.Log
 import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bottomsheet.databinding.ActivityMainBinding
 import com.example.bottomsheet.databinding.DialogBottomCustomViewBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 
 class BottomSheetCustomActivity(
-    private val listener: OnItemClickListener
+    private val onClickListener: OnItemClickListener
 ) : AppCompatActivity(), InterfaceListener.ProfileData, InterfaceListener.Presenter {
 
     lateinit var binding: ActivityMainBinding
@@ -28,7 +25,7 @@ class BottomSheetCustomActivity(
     }
 
     fun showEditDialog(
-        context: Context, profileData: MutableList<BottomSheetModel>
+        context: Context, actionData: MutableList<BottomSheetModel>
     ) {
         val dialog = BottomSheetDialog(context)
         val bindingSheet =
@@ -36,20 +33,20 @@ class BottomSheetCustomActivity(
         dialog.setContentView(bindingSheet.root)
 
         bottomSheetAdapter = BottomSheetAdapter(this)
-        bindingSheet.rvProfile.apply {
+        bindingSheet.rvActionData.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = bottomSheetAdapter
         }
 
-        bottomSheetAdapter.items = profileData
+        bottomSheetAdapter.items = actionData
         dialog.show()
     }
 
-    override fun onProfileData(label: String) {
-        listener.onProfileData(label)
+    override fun onProfileData(item: BottomSheetModel) {
+        onClickListener.onActionData(item)
     }
 
     interface OnItemClickListener {
-        fun onProfileData(label: String)
+        fun onActionData(item: BottomSheetModel)
     }
 }

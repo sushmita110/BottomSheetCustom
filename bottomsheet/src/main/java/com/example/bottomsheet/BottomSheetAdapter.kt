@@ -28,7 +28,7 @@ class BottomSheetAdapter(private val listener: OnItemClickListener) :
                 binding.tvLabel.text = items[position].label
                 setOnClickListener {
                     listener.onProfileData(
-                        items[position].label
+                        items[position]
                     )
                 }
             }
@@ -39,6 +39,6 @@ class BottomSheetAdapter(private val listener: OnItemClickListener) :
         RecyclerView.ViewHolder(binding.root)
 
     interface OnItemClickListener {
-        fun onProfileData(item: String)
+        fun onProfileData(item: BottomSheetModel)
     }
 }
