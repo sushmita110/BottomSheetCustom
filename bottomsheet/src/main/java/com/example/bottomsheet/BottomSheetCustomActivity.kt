@@ -42,6 +42,7 @@ class BottomSheetCustomActivity(
         }
 
         bottomSheetAdapter.items = profileData
+        dialog.show()
     }
 
     override fun onProfileData(label: String) {
