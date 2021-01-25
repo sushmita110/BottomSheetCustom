@@ -1,17 +1,13 @@
 package com.example.bottomsheet
 
 import android.content.Context
-import android.content.Intent
 import android.util.AttributeSet
 import android.util.Log
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.content.withStyledAttributes
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.bottomsheet.databinding.ActivityMainBinding
-import com.example.bottomsheet.databinding.BottomSheetCustomViewBinding
-import com.example.bottomsheet.databinding.DialogBottonCustomViewBinding
+import com.example.bottomsheet.databinding.DialogBottomSheetBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 
 
@@ -34,11 +30,11 @@ class BottomSheetCustomActivity @JvmOverloads constructor(
         context: Context, profileData: MutableList<BottomSheetModel>
     ) {
         val dialog = BottomSheetDialog(context)
-        val bindingSheet = DialogBottonCustomViewBinding.inflate(LayoutInflater.from(context),null,false)
+        val bindingSheet = DialogBottomSheetBinding.inflate(LayoutInflater.from(context),null,false)
         dialog.setContentView(bindingSheet.root)
 
         bottomSheetAdapter = BottomSheetAdapter(this)
-        bindingSheet.rvProfileData.apply {
+        bindingSheet.rvProfile .apply {
             layoutManager = LinearLayoutManager(context)
             adapter = bottomSheetAdapter
         }
