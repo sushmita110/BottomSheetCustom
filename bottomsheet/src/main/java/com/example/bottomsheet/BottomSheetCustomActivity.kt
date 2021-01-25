@@ -1,18 +1,13 @@
 package com.example.bottomsheet
 
 import android.content.Context
-import android.content.Intent
 import android.util.AttributeSet
 import android.util.Log
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.content.withStyledAttributes
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.bottomsheet.databinding.ActivityMainBinding
-import com.example.bottomsheet.databinding.BottomSheetCustomViewBinding
 import com.example.bottomsheet.databinding.DialogBottomCustomViewBinding
-import com.example.bottomsheet.databinding.DialogBottonCustomViewBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 
 
