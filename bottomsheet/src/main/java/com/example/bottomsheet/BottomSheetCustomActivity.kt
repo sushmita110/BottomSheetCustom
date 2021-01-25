@@ -17,13 +17,13 @@ class BottomSheetCustomActivity @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
 ) : ConstraintLayout(context, attrs, defStyleAttr), InterfaceListener {
-    var binding: ActivityMainBinding
+    //var binding: ActivityMainBinding
     lateinit var bottomSheetAdapter: BottomSheetAdapter
 
-    init {
-        binding =
-            ActivityMainBinding.inflate(LayoutInflater.from(context), null, false)
-    }
+//    init {
+//        binding =
+//            ActivityMainBinding.inflate(LayoutInflater.from(context), null, false)
+//    }
 
 
     fun showEditDialog(
