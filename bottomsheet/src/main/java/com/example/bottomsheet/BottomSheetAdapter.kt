@@ -5,7 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bottomsheet.databinding.BottomSheetCustomViewBinding
 
-class BottomSheetAdapter(private val listener: OnItemClickListener) :
+class BottomSheetAdapter(
+    private val onItemClick: (type: Int) -> Unit
+
+) :
     RecyclerView.Adapter<BottomSheetAdapter.RecycleViewHolder>() {
 
     lateinit var binding: BottomSheetCustomViewBinding
@@ -24,12 +27,10 @@ class BottomSheetAdapter(private val listener: OnItemClickListener) :
     override fun onBindViewHolder(holder: RecycleViewHolder, position: Int) {
         holder.apply {
             itemView.apply {
-                binding.ivIcon.setImageResource(items[position].image)
+                items[position].image?.let { binding.ivIcon.setImageResource(it) }
                 binding.tvLabel.text = items[position].label
                 setOnClickListener {
-                    listener.onProfileData(
-                        items[position]
-                    )
+                    onItemClick.invoke(position)
                 }
             }
         }
@@ -38,7 +39,4 @@ class BottomSheetAdapter(private val listener: OnItemClickListener) :
     class RecycleViewHolder(binding: BottomSheetCustomViewBinding) :
         RecyclerView.ViewHolder(binding.root)
 
-    interface OnItemClickListener {
-        fun onProfileData(item: BottomSheetModel)
-    }
 }

@@ -10,8 +10,9 @@ import com.example.bottomsheet.databinding.DialogBottomCustomViewBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 
 class BottomSheetCustomActivity(
-    private val onClickListener: OnItemClickListener
-) : AppCompatActivity(), InterfaceListener.ProfileData, InterfaceListener.Presenter {
+    private val onBottomSheetItemClick: (type: Int) -> Unit
+
+) : AppCompatActivity() {
 
     lateinit var binding: ActivityMainBinding
     lateinit var bottomSheetAdapter: BottomSheetAdapter
@@ -32,7 +33,12 @@ class BottomSheetCustomActivity(
             DialogBottomCustomViewBinding.inflate(LayoutInflater.from(context), null, false)
         dialog.setContentView(bindingSheet.root)
 
-        bottomSheetAdapter = BottomSheetAdapter(this)
+        bottomSheetAdapter = BottomSheetAdapter(
+            onItemClick = {
+                onBottomSheetItemClick.invoke(it)
+                actionData[it].onItemClick.invoke()
+            }
+        )
         bindingSheet.rvActionData.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = bottomSheetAdapter
@@ -42,11 +48,4 @@ class BottomSheetCustomActivity(
         dialog.show()
     }
 
-    override fun onProfileData(item: BottomSheetModel) {
-        onClickListener.onActionData(item)
-    }
-
-    interface OnItemClickListener {
-        fun onActionData(item: BottomSheetModel)
-    }
 }
